@@ -27,7 +27,7 @@ const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.b
  */
 registerBlockType( 'cgb/block-nm-cta', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'nm-cta - CGB Block' ), // Block title.
+	title: __( 'Custom CTA' ), // Block title.
 	icon: 'shield', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
@@ -48,18 +48,8 @@ registerBlockType( 'cgb/block-nm-cta', {
 		// Creates a <p class='wp-block-cgb-block-nm-cta'></p>.
 		return (
 			<div className={ props.className }>
-				<p>— Hello from the backend.</p>
-				<p>
-					CGB BLOCK: <code>nm-cta</code> is a new Gutenberg block
-				</p>
-				<p>
-					It was created via{ ' ' }
-					<code>
-						<a href="https://github.com/ahmadawais/create-guten-block">
-							create-guten-block
-						</a>
-					</code>.
-				</p>
+				<p>Financial independence that you can count on</p>
+				<a href="#">JOIN US</a>
 			</div>
 		);
 	},
