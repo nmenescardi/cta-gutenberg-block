@@ -1,10 +1,10 @@
 <?php
 /**
- * Plugin Name: nm-cta — CGB Gutenberg Block Plugin
- * Plugin URI: https://github.com/ahmadawais/create-guten-block/
+ * Plugin Name: Custom CTA Gutenberg Block
+ * Plugin URI: https://github.com/nmenescardi/cta-gutenberg-block
  * Description: nm-cta — is a Gutenberg plugin created via create-guten-block.
- * Author: mrahmadawais, maedahbatool
- * Author URI: https://AhmadAwais.com/
+ * Author: nmenescardi
+ * Author URI: https://github.com/nmenescardi/
  * Version: 1.0.0
  * License: GPL2+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
