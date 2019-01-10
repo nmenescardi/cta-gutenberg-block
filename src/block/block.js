@@ -11,6 +11,7 @@ import './editor.scss';
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
+const { PlainText } = wp.editor;
 
 /**
  * Register: aa Gutenberg Block.
@@ -48,7 +49,7 @@ registerBlockType( 'cgb/block-nm-cta', {
 		// Creates a <p class='wp-block-cgb-block-nm-cta'></p>.
 		return (
 			<div className={ props.className }>
-				<p>Financial independence that you can count on</p>
+				<PlainText value='Financial independence that you can count on' onChange={ value => console.log(value) } />
 				<a href="#">JOIN US</a>
 			</div>
 		);
