@@ -8,11 +8,18 @@
 //  Import CSS.
 import './style.scss';
 import './editor.scss';
+import icon from './icon';
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
-const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
+const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.block
+const { Fragment } = wp.element;
 //const { PlainText } = wp.editor;
-const { RichText } = wp.editor;
+const { RichText, URLInput } = wp.editor;
+const {
+    IconButton,
+    Tooltip,
+    TextControl,
+} = wp.components;
 
 /**
  * Register: aa Gutenberg Block.
@@ -32,42 +39,97 @@ registerBlockType( 'cgb/block-nm-cta', {
 	title: __( 'Custom CTA' ), // Block title.
 	icon: 'shield', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
+	icon: {
+		background: 'rgba(254, 243, 224, 0.52)',
+		src: icon,
+	},
 	keywords: [
 		__( 'nm-cta — CGB Block' ),
 		__( '' ),
 		__( '' ),
 	],
 	attributes: {
-		message: {
+		ctaTitle: {
 			type: 'array',
 			source: 'children',
-			selector: '.message-body',
-		}
+			selector: '.ctaTitle-body',
+		},
+		text: {
+			type: 'string',
+			source: 'text',
+			selector: 'a',
+		},
+		url: {
+			type: 'string',
+			source: 'attribute',
+			attribute: 'href',
+			selector: 'a',
+		},
 	},
 	edit: props => {
-		const { attributes: { message }, className, setAttributes } = props;
-		const onChangeMessage = message => { setAttributes( { message } ) };
+		const { attributes: { ctaTitle, text, url }, className, isSelected, setAttributes } = props;
+		const onChangeCtaTitle = ctaTitle => { setAttributes( { ctaTitle } ) };
+		const onChangeCtaButtonMsg = ctaButtonMsg => { setAttributes( { ctaButtonMsg } ) };
 		return (
 			<div className={ className }>
 				<RichText
 					tagName="div"
 					multiline="p"
 					placeholder={ __( 'Financial independence that you can count on', 'nm-cta' ) }
-					  onChange={ onChangeMessage }
-					  value={ message }
+					onChange={ onChangeCtaTitle }
+					value={ ctaTitle }
 				  />
-				  <a href="#">JOIN US</a>
+
+					{ isSelected ? (
+
+					<Fragment>
+						<TextControl
+							id="example-input-field"
+							label={ __( 'Link Text', 'jsforwpblocks' ) }
+							value={ text }
+							onChange={ text => setAttributes( { text } ) }
+						/>
+						<p>{ __( 'Link URL', 'jsforwpblocks' ) }</p>
+						<form
+							className="blocks-format-toolbar__link-modal-line blocks-format-toolbar__link-modal-line"
+							onSubmit={ event => event.preventDefault() }
+						>
+							<Tooltip text="Add Link">
+								{icon}
+							</Tooltip>
+							<URLInput
+								className="url"
+								value={ url }
+								onChange={ url => setAttributes( { url } ) }
+							/>
+							<IconButton
+								icon="editor-break"
+								label={ __( 'Apply', 'jsforwpblocks' ) }
+								type="submit"
+							/>
+						</form>
+					</Fragment>
+
+					) : (
+
+					<p>
+						<a href={ url }>
+							{ text || __( 'Edit link', 'jsforwpblocks' ) }
+						</a>
+					</p>
+
+					)}
 			</div>				
 		);
 	},
 	save: props => {
-		const { attributes: { message } } = props;
+		const { attributes: { ctaTitle, text, url } } = props;
 		return (
 			<div>
-				<h2>{ __( 'Call to Action', 'nm-cta' ) }</h2>
-				<div class="message-body">
-					{ message }
+				<div class="ctaTitle-body">
+					{ ctaTitle }
 				</div>
+				<div class="cta-link"><a href={ url }>{ text }</a></div>
 			</div>
 		);
 	},
