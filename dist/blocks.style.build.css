@@ -10,9 +10,22 @@
  * CSS for both Frontend+Backend.
  */
 .wp-block-cgb-block-nm-cta {
-  background: orangered;
+  background: #3E4242;
   border: 0.2rem solid #292929;
-  color: #292929;
+  color: #F7F7F7;
   margin: 0 auto;
-  max-width: 740px;
+  max-width: none !important;
   padding: 2rem; }
+  .wp-block-cgb-block-nm-cta .ctaTitle-body {
+    font: 100 80px/75px bagatela,serif; }
+  .wp-block-cgb-block-nm-cta .cta-link .link-wrapper {
+    font-family: bagatela,serif;
+    display: inline-block;
+    padding: 5px 15px;
+    background-color: #252828;
+    border: 1px solid #F7F7F7;
+    border-radius: 25px; }
+    .wp-block-cgb-block-nm-cta .cta-link .link-wrapper a {
+      text-transform: uppercase;
+      text-decoration: none !important;
+      color: #F7F7F7; }

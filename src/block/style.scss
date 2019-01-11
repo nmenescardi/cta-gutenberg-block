@@ -5,10 +5,30 @@
  */
 
 .wp-block-cgb-block-nm-cta  {
-  background: $red;
+  background: $darkBG;
   border: 0.2rem solid $black;
-  color: $black;
+  color: $white;
   margin: 0 auto;
-  max-width: 740px;
+  max-width: none !important;
   padding: 2rem;
+
+  .ctaTitle-body {
+    font: 100 80px/75px bagatela,serif; 
+  }
+  .cta-link {
+    .link-wrapper {
+      font-family: bagatela,serif; 
+      display: inline-block;
+      padding: 5px 15px;
+      background-color: $buttonBG;
+      border: 1px solid $white;
+      border-radius: 25px;
+
+      a {
+        text-transform: uppercase;
+        text-decoration: none !important;
+        color: $white;
+      }
+    }
+  }
 }

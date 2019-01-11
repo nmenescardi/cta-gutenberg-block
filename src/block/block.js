@@ -129,7 +129,7 @@ registerBlockType( 'cgb/block-nm-cta', {
 				<div class="ctaTitle-body">
 					{ ctaTitle }
 				</div>
-				<div class="cta-link"><a href={ url }>{ text }</a></div>
+				<div class="cta-link"><div class="link-wrapper"><a href={ url }>{ text }</a></div></div>
 			</div>
 		);
 	},
