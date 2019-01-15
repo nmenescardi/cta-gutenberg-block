@@ -80,33 +80,33 @@ registerBlockType( 'cgb/block-nm-cta', {
 
 					{ isSelected ? (
 
-					<Fragment>
-						<TextControl
-							id="example-input-field"
-							label={ __( 'Link Text', 'nm-cta' ) }
-							value={ text }
-							onChange={ text => setAttributes( { text } ) }
-						/>
-						<p>{ __( 'Link URL', 'nm-cta' ) }</p>
-						<form
-							className="blocks-format-toolbar__link-modal-line blocks-format-toolbar__link-modal-line"
-							onSubmit={ event => event.preventDefault() }
-						>
-							<Tooltip text="Add Link">
-								{icon}
-							</Tooltip>
-							<URLInput
-								className="url"
-								value={ url }
-								onChange={ url => setAttributes( { url } ) }
+						<Fragment>
+							<TextControl
+								id="example-input-field"
+								label={ __( 'Link Text', 'nm-cta' ) }
+								value={ text }
+								onChange={ text => setAttributes( { text } ) }
 							/>
-							<IconButton
-								icon="editor-break"
-								label={ __( 'Apply', 'nm-cta' ) }
-								type="submit"
-							/>
-						</form>
-					</Fragment>
+							<p>{ __( 'Link URL', 'nm-cta' ) }</p>
+							<form
+								className="blocks-format-toolbar__link-modal-line blocks-format-toolbar__link-modal-line"
+								onSubmit={ event => event.preventDefault() }
+							>
+								<Tooltip text="Add Link">
+									{icon}
+								</Tooltip>
+								<URLInput
+									className="url"
+									value={ url }
+									onChange={ url => setAttributes( { url } ) }
+								/>
+								<IconButton
+									icon="editor-break"
+									label={ __( 'Apply', 'nm-cta' ) }
+									type="submit"
+								/>
+							</form>
+						</Fragment>
 
 					) : (
 
